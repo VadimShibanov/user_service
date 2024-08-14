@@ -21,7 +21,7 @@ import static school.faang.user_service.exception.message.ExceptionMessage.USER_
 import static school.faang.user_service.exception.message.ExceptionMessage.USER_UNFOLLOWING_HIMSELF_EXCEPTION;
 
 @RestController
-@RequestMapping("subscriptions/")
+@RequestMapping("/subscriptions")
 @AllArgsConstructor
 public class SubscriptionController {
     private final SubscriptionService subscriptionService;
@@ -58,6 +58,11 @@ public class SubscriptionController {
     @PostMapping("followings/{followerId}")
     public List<UserDto> getFollowing(@PathVariable long followerId, @RequestBody UserFilterDto filter) {
         return subscriptionService.getFollowing(followerId, filter);
+    }
+
+    @GetMapping("followings/{followerId}")
+    public List<UserDto> getFollowings(@PathVariable long followerId) {
+        return subscriptionService.getFollowings(followerId);
     }
 
     @GetMapping("followings/{followerId}/count")

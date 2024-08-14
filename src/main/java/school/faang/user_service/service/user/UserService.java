@@ -149,6 +149,11 @@ public class UserService {
         log.info("User's avatar images were deleted successfully.");
     }
 
+    @Transactional(readOnly = true)
+    public List<Long> getAllUsersIds() {
+        return userRepository.getAllUsersIds();
+    }
+
     @Transactional
     public boolean existsById(long userId) {
         return userRepository.existsById(userId);

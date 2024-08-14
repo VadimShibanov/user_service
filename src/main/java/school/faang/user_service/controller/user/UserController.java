@@ -48,8 +48,10 @@ public class UserController {
         return userService.getUser(userId);
     }
 
-    @PostMapping ("/ids")
-    public List<UserDto> getUsersByIds(@RequestBody List<Long> ids) { return userService.getUsersByIds(ids); }
+    @PostMapping("/ids")
+    public List<UserDto> getUsersByIds(@RequestBody List<Long> ids) {
+        return userService.getUsersByIds(ids);
+    }
 
     @PostMapping("/{userId}/avatar")
     public UserDto uploadUserAvatar(@PathVariable Long userId, MultipartFile file) {
@@ -95,5 +97,10 @@ public class UserController {
     @GetMapping("/{userId}/exists")
     public boolean existsById(@PathVariable long userId) {
         return userService.existsById(userId);
+    }
+
+    @GetMapping("/allUsersIds")
+    public List<Long> getAllUsersIds() {
+        return userService.getAllUsersIds();
     }
 }

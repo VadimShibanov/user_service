@@ -62,6 +62,12 @@ public class SubscriptionService {
         return filterUsers(subscriptionRepo.findByFollowerId(followerId).toList(), filter);
     }
 
+    @Transactional(readOnly = true)
+    public List<UserDto> getFollowings(long followerId) {
+        return userMapper.toDto(subscriptionRepo.findByFollowerId(followerId).toList());
+    }
+
+
     public int getFollowingCount(long followerId) {
         return subscriptionRepo.findFolloweesAmountByFollowerId(followerId);
     }
